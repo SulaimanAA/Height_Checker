@@ -1,14 +1,12 @@
+from parse import parse
+from converter import convert
+
 feet_inches = input("Enter feet and inches: ")
 
-def convert(feet_inches):
-    parts = feet_inches.split(" ")
-    feet = float(parts[0])
-    inches = float(parts[1])
+parsed = parse(feet_inches)
 
-    meters = feet * 0.3048 + inches * 0.0254
-    return meters
-
-result = convert(feet_inches)
+result = convert(parsed['feet'], parsed['inches'])
+print(f"{parsed['feet']} feet and {parsed['inches']} is equal to {result}")
 
 if result < 1:
     print("Child height is not suitable for this ride.")
